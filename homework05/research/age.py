@@ -7,13 +7,13 @@ from vkapi.friends import get_friends
 
 def validate_bdate(bdate: str) -> bool:
     try:
-        dt.datetime.strptime(bdate, '%d.%m.%Y')
+        dt.datetime.strptime(bdate, "%d.%m.%Y")
         return True
     except Exception:
         return False
 
 
-def age_predict(user_id: int) -> tp.Optional[float]:  #type: ignore
+def age_predict(user_id: int) -> tp.Optional[float]:  # type: ignore
     """
     Наивный прогноз возраста пользователя по возрасту его друзей.
 
@@ -22,13 +22,13 @@ def age_predict(user_id: int) -> tp.Optional[float]:  #type: ignore
     :param user_id: Идентификатор пользователя.
     :return: Медианный возраст пользователя.
     """
-    friends = get_friends(user_id=user_id, fields=['bdate']).items
+    friends = get_friends(user_id=user_id, fields=["bdate"]).items
 
     ages = []
 
     for el in friends:
-        if 'bdate' in el and validate_bdate(el['bdate']):  #type: ignore
-            ages.append(2022.0 - float(el['bdate'].split('.')[-1]))  #type: ignore
+        if "bdate" in el and validate_bdate(el["bdate"]):  # type: ignore
+            ages.append(2022.0 - float(el["bdate"].split(".")[-1]))  # type: ignore
 
     if len(ages) > 0:
         return statistics.median(ages)

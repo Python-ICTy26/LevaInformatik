@@ -1,17 +1,16 @@
+import math
 import textwrap
 import time
-import math
 import typing as tp
 from string import Template
 
-import pandas as pd  #type: ignore
+import pandas as pd  # type: ignore
 from pandas import json_normalize
-
 from vkapi import config, session
 from vkapi.exceptions import APIError
 
 
-def get_posts_2500(  #type: ignore
+def get_posts_2500(  # type: ignore
     owner_id: str = "",
     domain: str = "",
     offset: int = 0,
@@ -39,7 +38,16 @@ def get_wall_execute(
         temp = []
 
         for i in range(math.ceil(count // max_count)):
-            temp += get_wall_execute(owner_id=owner_id, domain=domain, offset=max_count*i, count=count-max_count,max_count=max_count, filter=filter, extended=extended, fields=fields)
+            temp += get_wall_execute(
+                owner_id=owner_id,
+                domain=domain,
+                offset=max_count * i,
+                count=count - max_count,
+                max_count=max_count,
+                filter=filter,
+                extended=extended,
+                fields=fields,
+            )
             time.sleep(0.5)
 
         return temp
@@ -70,5 +78,5 @@ def get_wall_execute(
 
     """
 
-    result = session.post('execute', data=code).json()['response']
-    return json_normalize(result['items'])
+    result = session.post("execute", data=code).json()["response"]
+    return json_normalize(result["items"])
