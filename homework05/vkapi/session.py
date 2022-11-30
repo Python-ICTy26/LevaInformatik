@@ -37,9 +37,7 @@ class Session:
         payload = dict(kwargs)
         payload["access_token"] = VK_CONFIG["access_token"]
 
-        return self.session.get(
-            f"{self.base_url}/{url}", params=payload, timeout=self.timeout
-        )
+        return self.session.get(f"{self.base_url}/{url}", params=payload, timeout=self.timeout)
 
     def post(
         self,
@@ -52,4 +50,10 @@ class Session:
         payload = dict(kwargs)
         payload["access_token"] = VK_CONFIG["access_token"]
 
-        return self.session.post(f"{self.base_url}/{url}", params=payload, data=data, json=json, timeout=self.timeout)
+        return self.session.post(
+            f"{self.base_url}/{url}",
+            params=payload,
+            data=data,
+            json=json,
+            timeout=self.timeout,
+        )
