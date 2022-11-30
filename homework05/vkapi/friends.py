@@ -68,16 +68,16 @@ def get_mutual(
         ).json()['response']
 
     result = []
-    for i in range(math.ceil(len(target_uids) / 100)):
+    for i in range(math.ceil(len(target_uids) / 100)): #type: ignore
         temp = session.get(
             'friends.getMutual',
             source_uid=source_uid,
-            target_uids=target_uids[i * 100 : min((i + 1) * 100, len(target_uids))],
+            target_uids=target_uids[i * 100 : min((i + 1) * 100, len(target_uids))], #type: ignore
             order=order,
-            count=count,
+            count=count,  #type: ignore
             offset=offset + i * 100
         ).json()['response']
         result += temp
-        time.sleep(0.5)
+        time.sleep(0.5)  #type: ignore
 
     return result

@@ -1,7 +1,7 @@
 import time
 import unittest
 
-import httpretty
+import httpretty  #type: ignore
 import responses
 from requests.exceptions import ConnectionError, HTTPError, ReadTimeout, RetryError
 

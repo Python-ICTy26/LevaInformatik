@@ -13,7 +13,7 @@ def validate_bdate(bdate: str) -> bool:
         return False
 
 
-def age_predict(user_id: int) -> tp.Optional[float]:
+def age_predict(user_id: int) -> tp.Optional[float]:  #type: ignore
     """
     Наивный прогноз возраста пользователя по возрасту его друзей.
 
@@ -27,8 +27,8 @@ def age_predict(user_id: int) -> tp.Optional[float]:
     ages = []
 
     for el in friends:
-        if 'bdate' in el and validate_bdate(el['bdate']):
-            ages.append(2022.0 - float(el['bdate'].split('.')[-1]))
+        if 'bdate' in el and validate_bdate(el['bdate']):  #type: ignore
+            ages.append(2022.0 - float(el['bdate'].split('.')[-1]))  #type: ignore
 
     if len(ages) > 0:
         return statistics.median(ages)

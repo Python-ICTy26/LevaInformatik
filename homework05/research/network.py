@@ -1,10 +1,10 @@
 import typing as tp
 from collections import defaultdict
 
-import community as community_louvain
-import matplotlib.pyplot as plt
-import networkx as nx
-import pandas as pd
+import community as community_louvain  #type: ignore
+import matplotlib.pyplot as plt  #type: ignore
+import networkx as nx  #type: ignore
+import pandas as pd  #type: ignore
 
 from vkapi.friends import get_friends, get_mutual
 
@@ -19,22 +19,22 @@ def ego_network(
     :param friends: Идентификаторы друзей, между которыми устанавливаются связи.
     """
     if friends == None:
-        friends = get_friends(user_id=user_id)
+        friends = get_friends(user_id=user_id)  #type: ignore
 
     mutual = get_mutual(target_uids=friends)
 
     graph = list()
 
     for data in mutual:
-        id = data["id"]
-        common_friends = data["common_friends"]
+        id = data["id"]  #type: ignore
+        common_friends = data["common_friends"]  #type: ignore
 
         for el in common_friends:
             graph.append((id, el))
 
     return graph
 
-def ego_network(
+def ego_network(  #type: ignore
     user_id: tp.Optional[int] = None, friends: tp.Optional[tp.List[int]] = None
 ) -> tp.List[tp.Tuple[int, int]]:
     """
@@ -44,15 +44,15 @@ def ego_network(
     :param friends: Идентификаторы друзей, между которыми устанавливаются связи.
     """
     if friends == None:
-        friends = get_friends(user_id=user_id)
+        friends = get_friends(user_id=user_id)  #type: ignore
 
     mutual = get_mutual(target_uids=friends)
 
     graph = list()
 
     for data in mutual:
-        id = data["id"]
-        common_friends = data["common_friends"]
+        id = data["id"]  #type: ignore
+        common_friends = data["common_friends"]  #type: ignore
 
         for el in common_friends:
             graph.append((id, el))

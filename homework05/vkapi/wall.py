@@ -4,14 +4,14 @@ import math
 import typing as tp
 from string import Template
 
-import pandas as pd
+import pandas as pd  #type: ignore
 from pandas import json_normalize
 
 from vkapi import config, session
 from vkapi.exceptions import APIError
 
 
-def get_posts_2500(
+def get_posts_2500(  #type: ignore
     owner_id: str = "",
     domain: str = "",
     offset: int = 0,
