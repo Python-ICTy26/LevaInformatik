@@ -26,7 +26,7 @@ class Console(UI):
         b = t + 1 + self.cell_size * self.life.rows
         r = l + 1 + self.cell_size * self.life.cols * 2
         # Атрибуты консоли для рисования рамки
-        attrs = curses.color_pair(BORDER_PAIR) | curses.A_BOLD | curses.A_REVERSE
+        attrs = curses.color_pair(BORDER_PAIR) | curses.A_BOLD | curses.A_REVERSE #type: ignore
         # Подключаем атрибуты
         screen.attron(attrs)
         # Рисуем верхнюю и нижнюю рамки
@@ -50,7 +50,7 @@ class Console(UI):
         ) // 2 + self.top_space
         l = (screen.getmaxyx()[1] - self.life.rows * self.cell_size * 2) // 2 + 1
         # Атрибуты консоли для рисования клетки
-        attrs = curses.color_pair(CELL_PAIR) | curses.A_BOLD | curses.A_REVERSE
+        attrs = curses.color_pair(CELL_PAIR) | curses.A_BOLD | curses.A_REVERSE #type: ignore
         # Подключаем атрибуты
         screen.attron(attrs)
         for i in range(self.life.rows):
@@ -68,13 +68,13 @@ class Console(UI):
 
     def run(self) -> None:
         # Инициализация графики
-        screen = curses.initscr()
+        screen = curses.initscr() #type: ignore
         # Удаляем курсор
-        curses.curs_set(0)
+        curses.curs_set(0) #type: ignore
         # Заполняем палитры
-        curses.start_color()
-        curses.init_pair(BORDER_PAIR, curses.COLOR_MAGENTA, curses.COLOR_MAGENTA)
-        curses.init_pair(CELL_PAIR, curses.COLOR_GREEN, curses.COLOR_GREEN)
+        curses.start_color() #type: ignore
+        curses.init_pair(BORDER_PAIR, curses.COLOR_MAGENTA, curses.COLOR_MAGENTA) #type: ignore
+        curses.init_pair(CELL_PAIR, curses.COLOR_GREEN, curses.COLOR_GREEN) #type: ignore
 
         running = True
         while running:
@@ -102,7 +102,7 @@ class Console(UI):
 
             sleep(self.speed / 60)
 
-        curses.endwin()
+        curses.endwin() #type: ignore
 
 
 if __name__ == "__main__":

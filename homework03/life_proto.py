@@ -30,7 +30,7 @@ class GameOfLife:
         self.speed = speed
 
         # Создаем атрибут сетки
-        self.grid = [[]]
+        self.grid = [[]] #type: ignore
 
     def draw_lines(self) -> None:
         """Отрисовать сетку"""
@@ -52,7 +52,7 @@ class GameOfLife:
         running = True
         while running:
             for event in pygame.event.get():
-                if event.type == QUIT:
+                if event.type == QUIT: #type: ignore
                     running = False
 
             # Очистка экрана
