@@ -1,6 +1,7 @@
 import pygame
-from life import GameOfLife
 from pygame.locals import *
+
+from life import GameOfLife
 from ui import UI
 
 
@@ -23,9 +24,19 @@ class GUI(UI):
         l, t = (w - self.cell_size * c) // 2, (h - self.cell_size * r) // 2
 
         for x in range(c + 1):
-            pygame.draw.line(self.screen, pygame.Color('black'), (l, t + x * self.cell_size), (w - l, t + x * self.cell_size ))
+            pygame.draw.line(
+                self.screen,
+                pygame.Color("black"),
+                (l, t + x * self.cell_size),
+                (w - l, t + x * self.cell_size),
+            )
         for y in range(r + 1):
-            pygame.draw.line(self.screen, pygame.Color('black'), (l + y * self.cell_size, t), (l + y * self.cell_size, h - t))
+            pygame.draw.line(
+                self.screen,
+                pygame.Color("black"),
+                (l + y * self.cell_size, t),
+                (l + y * self.cell_size, h - t),
+            )
 
     def draw_grid(self) -> None:
         # Получили размеры экрана
@@ -40,13 +51,17 @@ class GUI(UI):
             for j in range(c):
                 if self.life.curr_generation[i][j] == 1:
                     bt, bl = t + self.cell_size * i, l + self.cell_size * j
-                    pygame.draw.rect(self.screen, pygame.Color('green'), (bl, bt, self.cell_size, self.cell_size))
+                    pygame.draw.rect(
+                        self.screen,
+                        pygame.Color("green"),
+                        (bl, bt, self.cell_size, self.cell_size),
+                    )
 
     def run(self) -> None:
-        """ Запустить игру """
+        """Запустить игру"""
         pygame.init()
         clock = pygame.time.Clock()
-        pygame.display.set_caption('Game of Life')
+        pygame.display.set_caption("Game of Life")
         self.screen.fill(pygame.Color("white"))
 
         running = True

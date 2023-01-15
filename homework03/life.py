@@ -11,7 +11,12 @@ Grid = tp.List[Cells]
 
 
 class GameOfLife:
-    def __init__(self, size: tp.Tuple[int, int], randomize: bool = True, max_generations: tp.Optional[float] = float("inf")) -> None:
+    def __init__(
+        self,
+        size: tp.Tuple[int, int],
+        randomize: bool = True,
+        max_generations: tp.Optional[float] = float("inf"),
+    ) -> None:
         # Размер клеточного пол
         self.rows, self.cols = size
         # Предыдущее поколение клеток
@@ -26,7 +31,9 @@ class GameOfLife:
     def create_grid(self, randomize: bool = False) -> Grid:
         if not randomize:
             return [[0 for _ in range(self.cols)] for __ in range(self.rows)]
-        return [[random.randint(0, 1) for _ in range(self.cols)] for __ in range(self.rows)]
+        return [
+            [random.randint(0, 1) for _ in range(self.cols)] for __ in range(self.rows)
+        ]
 
     def is_valid_coordinates(self, top: int, left: int) -> bool:
         """
@@ -119,7 +126,7 @@ class GameOfLife:
         for i in range(len(a)):
             x = []
             for j in range(0, len(a[i])):
-                if a[i][j] == '1':
+                if a[i][j] == "1":
                     x.append(1)
                 else:
                     x.append(0)
@@ -130,12 +137,11 @@ class GameOfLife:
         game.curr_generation = b
         return game
 
-
     def save(self, filename: pathlib.Path) -> None:
         """
         Сохранить текущее состояние клеток в указанный файл.
         """
         for i in range(self.rows):
             for j in range(self.cols):
-                filename.write_text(f'{self.curr_generation[i][j]}')
+                filename.write_text(f"{self.curr_generation[i][j]}")
             filename.write_text("\n")
