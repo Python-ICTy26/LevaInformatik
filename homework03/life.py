@@ -31,7 +31,9 @@ class GameOfLife:
     def create_grid(self, randomize: bool = False) -> Grid:
         if not randomize:
             return [[0 for _ in range(self.cols)] for __ in range(self.rows)]
-        return [[random.randint(0, 1) for _ in range(self.cols)] for __ in range(self.rows)]
+        return [
+            [random.randint(0, 1) for _ in range(self.cols)] for __ in range(self.rows)
+        ]
 
     def is_valid_coordinates(self, top: int, left: int) -> bool:
         """
@@ -97,7 +99,7 @@ class GameOfLife:
 
     @property
     def is_max_generations_exceeded(self) -> bool:
-        if self.max_generations <= self.generations: #type: ignore
+        if self.max_generations <= self.generations:  # type: ignore
             return True
         return False
 

@@ -66,7 +66,7 @@ class GUI(UI):
         running = True
         while running:
             for event in pygame.event.get():
-                if event.type == QUIT: #type: ignore
+                if event.type == QUIT:  # type: ignore
                     running = False
 
             # Очистка экрана
