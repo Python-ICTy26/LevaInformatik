@@ -85,9 +85,7 @@ class GameOfLife:
             Матрица клеток размером `cell_height` х `cell_width`.
         """
         if not randomize:
-            return [
-                [0 for _ in range(self.cell_width)] for __ in range(self.cell_height)
-            ]
+            return [[0 for _ in range(self.cell_width)] for __ in range(self.cell_height)]
         return [
             [random.randint(0, 1) for _ in range(self.cell_width)] for __ in range(self.cell_height)
         ]
