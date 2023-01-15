@@ -35,13 +35,9 @@ class GameOfLife:
     def draw_lines(self) -> None:
         """Отрисовать сетку"""
         for x in range(0, self.width, self.cell_size):
-            pygame.draw.line(
-                self.screen, pygame.Color("black"), (x, 0), (x, self.height)
-            )
+            pygame.draw.line(self.screen, pygame.Color("black"), (x, 0), (x, self.height))
         for y in range(0, self.height, self.cell_size):
-            pygame.draw.line(
-                self.screen, pygame.Color("black"), (0, y), (self.width, y)
-            )
+            pygame.draw.line(self.screen, pygame.Color("black"), (0, y), (self.width, y))
 
     def run(self) -> None:
         """Запустить игру"""
@@ -93,8 +89,7 @@ class GameOfLife:
                 [0 for _ in range(self.cell_width)] for __ in range(self.cell_height)
             ]
         return [
-            [random.randint(0, 1) for _ in range(self.cell_width)]
-            for __ in range(self.cell_height)
+            [random.randint(0, 1) for _ in range(self.cell_width)] for __ in range(self.cell_height)
         ]
 
     def draw_grid(self) -> None:
@@ -161,9 +156,7 @@ class GameOfLife:
         out : Grid
             Новое поколение клеток.
         """
-        new_grid = [
-            [0 for _ in range(self.cell_width)] for __ in range(self.cell_height)
-        ]
+        new_grid = [[0 for _ in range(self.cell_width)] for __ in range(self.cell_height)]
 
         for i in range(self.cell_height):
             for j in range(self.cell_width):
