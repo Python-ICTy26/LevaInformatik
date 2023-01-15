@@ -30,7 +30,7 @@ class GameOfLife:
         self.speed = speed
 
         # Создаем атрибут сетки
-        self.grid: tp.List[tp.List[tp.Any]] = [[]] # mypy: ignore-errors
+        self.grid: tp.List[tp.List[tp.Any]] = [[]] 
 
     def draw_lines(self) -> None:
         """Отрисовать сетку"""
