@@ -1,5 +1,5 @@
 class NaiveBayesClassifier:
-    def __init__(self, alpha = 0.05):
+    def __init__(self, alpha=0.05):
         """alpha - smoothing parameter"""
 
         self.alpha = alpha
@@ -20,7 +20,6 @@ class NaiveBayesClassifier:
                     self.word_dict[word] = dict()
                 self.word_dict[word][label] = self.word_dict[word].get(label, 0) + 1
 
-
     def predict(self, X):
         """Perform classification on an array of test vectors X."""
 
@@ -40,12 +39,8 @@ class NaiveBayesClassifier:
             y_pred.append(max_label)
         return y_pred
 
-
     def score(self, X_test, y_test):
         """Returns the mean accuracy on the given test data and labels."""
 
         _y = self.predict(X_test)
         return sum([1 if i == j else 0 for i, j in zip(_y, y_test)]) / len(y_test)
-
-
-            
