@@ -1,6 +1,6 @@
 class NaiveBayesClassifier:
     def __init__(self, alpha=0.05):
-        """alpha - smoothing parameter"""
+        """alpha - smoothing parameter2"""
 
         self.alpha = alpha
         self.labels = set()
