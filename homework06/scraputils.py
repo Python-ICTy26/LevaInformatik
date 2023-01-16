@@ -1,6 +1,6 @@
 import typing as tp
 
-import requests
+import requests #type: ignore
 from bs4 import BeautifulSoup
 
 
