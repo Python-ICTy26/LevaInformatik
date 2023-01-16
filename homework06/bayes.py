@@ -30,9 +30,9 @@ class NaiveBayesClassifier:
             for label in self.labels:
                 prob = self.label_dict[label] / sum(self.label_dict.values())
                 for word in sentence:
-                    prob *= (
-                        self.word_dict.get(word, dict()).get(label, 0) + self.alpha
-                    ) / (self.label_dict[label] + self.alpha * len(self.words))
+                    prob *= (self.word_dict.get(word, dict()).get(label, 0) + self.alpha) / (
+                        self.label_dict[label] + self.alpha * len(self.words)
+                    )
                 if prob > max_prob:
                     max_prob = prob
                     max_label = label
